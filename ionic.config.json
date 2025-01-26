@@ -1,0 +1,7 @@
+{
+  "name": "SANBLAS_202412_Ionic_Agenda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

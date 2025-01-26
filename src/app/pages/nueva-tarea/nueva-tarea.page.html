@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Nueva Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Fecha límite de la Tarea -->
+  <ion-item class="seccion">
+    <ion-label>Fecha límite</ion-label>
+    <ion-datetime-button
+      datetime="datetime">
+    </ion-datetime-button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="datetime"
+          [(ngModel)]="tarea.fechaLimite"
+          presentation="date">
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
+  <!-- Nombre -->
+  <ion-item class="seccion">
+    <ion-input
+      [(ngModel)]="tarea.nombre"
+      label="Nombre"
+      labelPlacement="stacked"
+      [clearInput]="true"
+      placeholder="Nombre de la tarea"
+      value="Default value">
+    </ion-input>
+  </ion-item>
+  <!-- Descripción -->
+  <ion-item class="seccion">
+    <ion-textarea label="Descripción" placeholder="Descripción de la tarea" labelPlacement="stacked"
+      [(ngModel)]="tarea.descripcion"></ion-textarea>
+  </ion-item>
+  <!-- Criticidad-->
+  <ion-item class="seccion">
+    <ion-select placeholder="Seleccione criticidad" [(ngModel)]="tarea.criticidad" interface="popover">
+      <div slot="label">Criticidad</div>
+      <ion-select-option value="Alta">Alta</ion-select-option>
+      <ion-select-option value="Media">Media</ion-select-option>
+      <ion-select-option value="Baja">Baja</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button (click)="guardarTarea()" expand="block" id="b-guardar" size="large">Crear</ion-button>
+  <ion-button [routerLink]="['/todas-tareas']" expand="block" id="b-nuevo" size="large">Ver Tareas</ion-button>
+
+</ion-content>
