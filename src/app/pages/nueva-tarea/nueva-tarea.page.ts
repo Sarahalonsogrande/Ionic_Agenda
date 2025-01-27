@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonSelect, IonSelectOption, IonDatetimeButton, IonModal, IonTextarea, IonItem, IonButtons, IonMenuButton, IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonDatetime, IonLabel } from '@ionic/angular/standalone';
+import { IonButton, IonSelect, IonSelectOption, IonDatetimeButton, IonModal, IonTextarea, IonItem, IonButtons, IonMenuButton, IonContent, IonHeader, IonTitle, IonToolbar, IonInput, IonDatetime, IonLabel, IonActionSheet } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { Tarea, Criticidad } from 'src/app/interfaces/tarea';
 import { TareasManagerService } from 'src/app/services/tareas-manager.service';
@@ -23,6 +23,29 @@ export class NuevaTareaPage implements OnInit {
     estado: 'Pendiente'
   };
 
+  public actionSheetButtons = [
+    {
+      text: 'Delete',
+      role: 'destructive',
+      data: {
+        action: 'delete',
+      },
+    },
+    {
+      text: 'Share',
+      data: {
+        action: 'share',
+      },
+    },
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      data: {
+        action: 'cancel',
+      },
+    },
+  ];
+
   criticidades = Object.values(Criticidad);
 
   constructor(private tareasmanagerService: TareasManagerService) {
@@ -42,5 +65,16 @@ export class NuevaTareaPage implements OnInit {
       estado: 'Pendiente'
     };
   }
+
+  // guardarTrabajo() {
+  //   this.tareasmanagerService.agregarTarea(this.tarea);
+  //   this.tarea = {
+  //     nombre: '',
+  //     descripcion: '',
+  //     fechaLimite: '',
+  //     criticidad: Criticidad.MEDIA,
+  //     estado: 'Pendiente'
+  //   };
+  // }
 
 }

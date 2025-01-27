@@ -4,20 +4,37 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Todas las Tareas</ion-title>
+
+    <ion-list>
+      <ion-item>
+        <ion-badge slot="end">{{ tareasCount }}</ion-badge>
+      </ion-item>
+    </ion-list>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item *ngFor="let tarea of tareas">
-      <ion-label>
-        <h2>{{ tarea.nombre }}</h2>
-        <p>{{ tarea.descripcion }}</p>
-        <p>{{ tarea.fechaLimite | date }}</p>
-        <p>{{ tarea.criticidad }}</p>
-        <p>{{ tarea.estado }}</p>
-      </ion-label>
-      
+      <ion-card [color]="obtenerColorCriticidad(tarea.criticidad)" class="tareasCard">
+        <ion-card-header>
+          <ion-card-title><strong>ID: </strong>{{ tarea.id }}</ion-card-title>
+          <ion-card-subtitle>{{ tarea.nombre }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p><strong>Descripción: </strong>{{ tarea.descripcion }}</p>
+          <p><strong>Fecha límite: </strong>{{ tarea.fechaLimite | date }}</p>
+          <p><strong>Criticidad: </strong> {{ tarea.criticidad }}</p>
+          <p><strong>Estado: </strong> {{ tarea.estado }}</p>
+
+          <!-- Botón para eliminar la tarea -->
+          <ion-button color="danger" (click)="mostrarAlerta(tarea)">
+            Eliminar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
     </ion-item>
   </ion-list>
 </ion-content>

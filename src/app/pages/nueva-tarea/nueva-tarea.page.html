@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
   <!-- Fecha límite de la Tarea -->
   <ion-item class="seccion">
     <ion-label>Fecha límite</ion-label>
@@ -24,6 +25,7 @@
       </ng-template>
     </ion-modal>
   </ion-item>
+
   <!-- Nombre -->
   <ion-item class="seccion">
     <ion-input
@@ -35,11 +37,17 @@
       value="Default value">
     </ion-input>
   </ion-item>
+
   <!-- Descripción -->
   <ion-item class="seccion">
-    <ion-textarea label="Descripción" placeholder="Descripción de la tarea" labelPlacement="stacked"
-      [(ngModel)]="tarea.descripcion"></ion-textarea>
+    <ion-textarea
+      label="Descripción"
+      placeholder="Descripción de la tarea"
+      labelPlacement="stacked"
+      [(ngModel)]="tarea.descripcion">
+    </ion-textarea>
   </ion-item>
+
   <!-- Criticidad-->
   <ion-item class="seccion">
     <ion-select placeholder="Seleccione criticidad" [(ngModel)]="tarea.criticidad" interface="popover">
@@ -49,7 +57,26 @@
       <ion-select-option value="Baja">Baja</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button (click)="guardarTarea()" expand="block" id="b-guardar" size="large">Crear</ion-button>
-  <ion-button [routerLink]="['/todas-tareas']" expand="block" id="b-nuevo" size="large">Ver Tareas</ion-button>
+
+  <ion-button
+    (click)="guardarTarea()"
+    id="b-guardar"
+    expand="block">
+    Crear Tarea
+  </ion-button>
+<!-- 
+  <ion-button
+  (click)="guardarTrabajo()"
+  id="b-guardarTrabajo"
+  expand="block">
+  Crear Trabajo
+  </ion-button> -->
+
+  <ion-button
+    [routerLink]="['/todas-tareas']"
+    id="b-nuevo"
+    expand="block">
+    Ver
+  </ion-button>
 
 </ion-content>

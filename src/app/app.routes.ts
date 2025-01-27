@@ -30,9 +30,14 @@ export const routes: Routes = [
   {
     path: 'acerca-de',
     loadComponent: () => import('./pages/acerca-de/acerca-de.page').then( m => m.AcercaDePage)
-  },  {
-    path: 'todos-trabajos',
-    loadComponent: () => import('./pages/todos-trabajos/todos-trabajos.page').then( m => m.TodosTrabajosPage)
+  },
+  {
+    path: 'tareas-archivadas',
+    loadComponent: () => import('./pages/tareas-archivadas/tareas-archivadas.page').then( m => m.TareasArchivadasPage)
+  },
+  {
+    path: 'tareas-eliminadas',
+    loadComponent: () => import('./pages/tareas-eliminadas/tareas-eliminadas.page').then( m => m.TareasEliminadasPage)
   },
 
 ];
