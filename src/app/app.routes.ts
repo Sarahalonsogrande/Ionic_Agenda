@@ -30,5 +30,9 @@ export const routes: Routes = [
   {
     path: 'acerca-de',
     loadComponent: () => import('./pages/acerca-de/acerca-de.page').then( m => m.AcercaDePage)
+  },  {
+    path: 'todos-trabajos',
+    loadComponent: () => import('./pages/todos-trabajos/todos-trabajos.page').then( m => m.TodosTrabajosPage)
   },
+
 ];

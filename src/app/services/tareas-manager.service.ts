@@ -47,6 +47,9 @@ export class TareasManagerService {
   private tareas: Tarea[] = JSON.parse(localStorage.getItem('tareas') || '[]');
   private tareasSubject = new BehaviorSubject<Tarea[]>(this.tareas);
 
+  // Firestore
+  constructor(private firestore: AngularFirestore) {}
+
   constructor() {}
 
   //Métodos para tareas locales
@@ -78,4 +81,23 @@ export class TareasManagerService {
     this.tareasSubject.next(this.tareas);
     this.guardarEnLocalStorage();
   }
+
+  // Métodos para trabajos compartidos
+  getTrabajos() {
+    return this.firestore.collection<Tarea>('trabajos').valueChanges();
+  }
+
+  agregarTrabajo(tarea: Tarea) {
+    const id = this.firestore.createId();
+    return this.firestore.collection('trabajos').doc(id).set({ ...tarea, id });
+  }
+
+  actualizarTrabajo(tarea: Tarea) {
+    return this.firestore.collection('trabajos').doc(tarea.id).update(tarea);
+  }
+
+  eliminarTrabajo(id: string) {
+    return this.firestore.collection('trabajos').doc(id).delete();
+  }
+
 }
